@@ -1,0 +1,501 @@
+/*VARIABLES*/
+:root{
+    --color-text-body: #525260;
+    --color-primary: #5956E9;
+    --color-secondary: #ffffff;
+    --color-banner: #2522BA;
+    --color-bg-btn: #ffdc60;
+    --color-subtitle: #C75c6f;
+    --color-title: #292930;
+    --color-bg-services: #f8f8f8;
+}
+
+/*ESTILOS GENERALES*/
+html {
+    font-size: 10px;
+    overflow-x: hidden;
+}
+
+body {
+    color: var(--color-text-body);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    width: 100%;
+    height: 100%;
+}
+
+/*ESTRUCTURA*/
+.layout {
+    width: 100%;
+    min-width: 1200px;
+    height: 100%;
+}
+
+/*MENU*/
+.layout__menu {
+    width: 100%;
+    padding: 3.5rem 3rem;
+}
+
+.menu__navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar__logo {
+    width: 187px;
+    height: auto;
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nav__item {
+    margin: 0 2.4rem;
+    position: relative;
+}
+
+.nav__title {
+    color: var(--color-text-body);
+    font-weight: 500;
+    line-height: 6rem;
+    display: inline-block;
+    position: relative;
+    transition: all 300ms ease-in-out;
+}
+
+.nav__title:hover {
+    color: var(--color-primary);
+
+}
+
+.nav__title::before {
+    content: "";
+    width: 0;
+    height: 0.2rem;
+    left: 0px;
+    bottom:  1.2rem;
+    opacity: 0;
+    background-color: var(--color-primary);
+    position: absolute;
+    transition: all 300ms;
+}
+
+.nav__title:hover::before {
+    width: 100%;
+    opacity: 1;
+}
+
+.nav__icon {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-left: 0.2rem;
+    vertical-align: middle;
+}
+
+.nav__submenu {
+    color: #525260;
+    background-color: var(--color-secondary);
+    top: 100%;
+    left: 2rem;
+    min-width: 19rem;
+    padding: 1.5rem 1rem;
+    border-radius: 4px;
+    box-shadow: 0px 13px 48px 0 rgba(0, 0,0, 15%);
+    display: block;
+    position: absolute;
+    visibility: hidden;  /*esto hace de que no se pueda clicar cuando no estas en el hover del menu princial, sin esto se podia hacer click fuera del bloque*/
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+}
+
+.submenu__item {
+    opacity: 0;
+    transition: all 100ms ease-in-out;
+    transform: translateX(2rem);
+}
+
+.submenu__item:nth-child(1) {  /*el submenu tarda en salir los segundos marcados*/
+    transition-delay: 100ms;
+}
+
+.submenu__item:nth-child(2) {  /*el submenu tarda en salir los segundos marcados*/
+    transition-delay: 200ms;
+}
+
+.submenu__item:nth-child(3) {  /*el submenu tarda en salir los segundos marcados*/
+    transition-delay: 300ms;
+}
+
+.submenu__title {
+    color: var(--color-text-body);
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding: 0.7rem 1.5rem;
+    display: block;
+    position: relative;
+    transition: all 300ms ease-in-out;
+}
+
+.nav__item:hover>.nav__submenu {  /*> elemento directo hijo*/
+    visibility: visible;
+    opacity: 1;
+    left: 0;
+    z-index: 999;
+}
+
+.nav__item:hover .submenu__item {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.submenu__title:hover {
+    color: var(--color-primary);
+}
+/* 
+.submenu__title::after{
+    content: "";
+    height: 0.1rem;
+    width: 0;
+    top: 80%;
+    left: 0;
+    background-color: var(--color-primary);
+    position: absolute;
+    transition: all 300ms ease-in-out;
+}
+
+.submenu__title:hover::after {
+    width: 80%;
+} */
+
+
+/*BANNER*/
+.layout__banner {
+    width: calc(100% - 6rem);
+    min-height: 60rem;
+    padding: 15rem 0 20rem 10rem;
+    border-radius: 6rem;
+    margin: 0 auto;
+    background-color: var(--color-banner);
+    overflow: hidden; /*para que todo lo que sobresalga se oculte*/
+    position: relative;
+}
+
+.banner__content {
+    width: 50%;
+    padding: 0 1.5rem;
+    display: inline-block;
+    position: relative;  /*para que funcione el zindex y la imagen no tape el botón- para usar el z-index tiene que ser en position absolute o relative*/
+    z-index: 3;
+}
+
+.banner__title {
+    color: var(--color-secondary);
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+}
+
+.banner__btn {
+    color: var(--color-banner);
+    font-size: 1.7rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    background-color: var(--color-secondary);
+    padding: 2.8rem 4.5rem;
+    border-radius: 2rem;
+    box-shadow: 0px 45px 80px -25px var(--color-primary);
+    display: inline-block;
+    transition: all 300ms ease-in-out;
+}
+
+.banner__btn:hover {
+    color: var(--color-text-body);
+    background-color: var(--color-bg-btn);
+}
+
+.shapes__item {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;  /*para que no se le pueda hacer clic a la imagen*/
+}
+
+.shapes__item--shape1 {
+    text-align: right;
+    top: 0;
+    right: 0;
+    z-index: 2;
+
+    animation-name: showRight;
+    animation-duration: 1s;
+}
+
+@keyframes showRight {
+    0% {
+        transform: translateX(50%);  /*Se mueve un 50 porciento a la derecha*/
+    }
+    100% {
+        transform: translateX(0%); /*Vuelve a su posición incial*/
+    }
+}
+
+.shapes__item--shape2 {
+    text-align: left;
+    bottom: 0;
+    left: 0;
+
+    animation-name: showLeft;
+    animation-duration: 1s;
+}
+
+@keyframes showLeft {
+    0% {
+        transform: translateX(-50%);  /*Se mueve un 50 porciento a la derecha*/
+    }
+    100% {
+        transform: translateX(0%); /*Vuelve a su posición incial*/
+    }
+}
+
+.shapes__item--shape3 {
+    text-align: left;
+    top: 34%;
+    left: 50%;
+
+    animation: moveShape3 20s infinite; /*es infinita*/
+    z-index: 3;
+}
+
+@keyframes moveShape3 {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    40% {
+        transform: translateX(50px) translateY(-200px);
+    }
+
+    75% {
+        transform: translateX(800px);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);  /**La primera y la última son iguales para que la tranformación sea suavizada*/
+    }
+}
+
+.shapes__item--shape4 {
+    bottom: 24rem;
+    left: 45%;
+
+    animation: moveShape4 30s infinite; /*es infinita*/
+    z-index: 2;
+}
+
+@keyframes moveShape4 {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50px) translateY(200px);
+    }
+
+    75% {
+        transform: translateX(-500px);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);  /**La primera y la última son iguales para que la tranformación sea suavizada*/
+    }
+}
+
+.shapes__item--shape4 .shapes__img {
+    width: 7.5rem;
+    opacity: 0.5;
+}
+
+.shapes__item--shape5 {
+    bottom: 12rem;
+    left: 53%;
+    opacity: 0.7;
+
+    animation: moveShape5 45s infinite; /*es infinita*/
+    z-index: 2;
+}
+
+@keyframes moveShape5 {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-600px) translateY(-500px);
+    }
+
+    75% {
+        transform: translateX(30px) translateY(-800px);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);  /**La primera y la última son iguales para que la tranformación sea suavizada*/
+    }
+}
+
+
+.shapes__item--shape6 {
+    bottom: 10rem;
+    left: 40%;
+    animation: moveShape3 35s infinite; /*es infinita*/
+}
+
+.shapes__item--shape7 {
+    top: 0;
+    right: 10rem;
+    z-index: 1;
+
+    animation: showTop 1s;
+}
+
+@keyframes showTop {
+    0% {
+        transform: translateY(-90%);  /*Se mueve un 50 porciento a la derecha*/
+    }
+    100% {
+        transform: translateY(0%); /*Vuelve a su posición incial*/
+    }
+}
+
+/*SECCIÓN SERVICIOS*/
+.layout__services {
+    margin: 5rem 4rem;
+    position: relative;  /**Para que luego si se pone algun elemento dentro del contendor que tenga position absolute no se salga del contenedor*/
+    z-index: 1;
+}
+
+.services__grid {
+    margin: 0 auto;
+    max-width: 1360px;
+}
+
+.services__header {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.services__subtitle {
+    color: var(--color-subtitle);
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.services__tile {
+    color: var(--color-title);
+    font-size: 6.7rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.services__list {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.services__service {
+    flex-basis: 33%;
+    height: 100%;
+    padding: 5rem 4rem;
+    margin-bottom: 4rem;
+    background: linear-gradient(180deg, var(--color-bg-services), rgba(255, 255, 255, 0));
+    background-color: var(--color-secondary);
+    border: 1px solid;
+    border-image-source: linear-gradient(900deg, var(--color-bg-services), rgba(255, 255, 255, 0));
+    border-radius: 3rem;
+    transition: all 300ms ease-in-out;
+
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.services__service:hover {
+    background-color: var(--color-bg-services);
+}
+
+.service__container-img {
+    margin-right: 2.5rem;
+    max-width: 8.5rem;
+    flex: 1;
+}
+
+.service__content {
+    flex: 1;  /*Así se distribuye el espacio de igual manera con la imagen y el contenido del servicio*/
+}
+
+.service__title {
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+}
+
+.service__link {
+    color: var(--color-title);
+}
+
+.service__description {
+    font-size: 1.7rem;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.service__more {
+    color: var(--color-text-body);
+    font-size: 1.7rem;
+    font-weight: 500;
+    padding-left: 5rem;
+    display: inline-block;
+    position: relative;
+    transition: all 300ms ease-in-out;
+}
+
+.service__more::before {
+    content: "";
+    width: 35px;
+    height: 1.5px;
+    top: 12px;
+    left: 0;
+    background-color: var(--color-text-body);
+    position: absolute;
+    transition: all 300ms ease-in-out;
+
+}
+
+.service__more:hover,
+.service__link:hover {
+    color: var(--color-primary);
+}
+
+.service__more:hover::before {
+    background-color: var(--color-primary);
+}
+
+/*ESCALONADO DE LAS TARJETAS DE SERVICIOS*/
+.services__servide--bottom {
+    margin-top: 20rem;
+}
+
+.services__servide--middle {
+    margin-top: 10rem;
+}
