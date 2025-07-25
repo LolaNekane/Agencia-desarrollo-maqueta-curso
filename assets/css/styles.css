@@ -18,7 +18,7 @@
 
 /*ESTILOS GENERALES*/
 html {
-    font-size: 10px;
+    font-size: 62.5%; /*Para hacer la web mas accesible*/  /*Equivale a font-size: 10px;*/
     overflow-x: hidden;
 }
 
@@ -50,6 +50,17 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.menu__navbar--fixed {
+    padding: 1.5rem 4rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--color-secondary);
+    box-shadow: 0 2px 10px 0 rgba(0, 0,0, 0.10);
+    z-index: 9;
 }
 
 .navbar__logo {
@@ -1306,14 +1317,158 @@ body {
     color: var(--color-primary);
 }
 
-.flinks__item--separator::after {
-    content: "";
-    height: 4px;
-    width: 4px;
+/*NAVEGACIÓN RESPONSIVE*/
+.navbar__mobile_btn {
+    display: none;
+}
+
+.movile_btn-wrap{
+    height: 5rem;
+    width: 5rem;
     background-color: var(--color-text-body);
+    border: none;
     border-radius: 50%;
-    top: 35px;
-    right: 135px;
-    opacity: 0.8;
-    position: absolute;
+    transition: all 300ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mobile-btn__line {
+    height: 0.2rem;
+    width: 2rem;
+    margin-bottom: 0.4rem;
+    border-radius: 1rem;
+    background-color: var(--color-secondary);
+    transition: all 300ms ease-in-out;
+}
+
+.mobile-btn__line:last-child {
+    margin-bottom: 0;
+    width: 1rem;
+    margin-right: -1rem;
+}
+
+.menu-mobile {
+    width: 30rem;
+    height: 100%;
+    background-color: var(--color-secondary);
+    left: -300px;
+    top: 0;
+    padding: 0 2rem 5rem 2rem;
+    position: fixed;  /*para que el menu esté cuando hagamos scroll*/
+    box-shadow: 0 0 85px -35px rgba(0, 0,0, 0.15);
+    visibility: hidden;
+    opacity: 0;
+    overflow-y: auto;
+    transition: all 500ms cubic-bezier(0.68, 0.2, 0.5, 1);
+    z-index: 10;
+}
+
+.menu-mobile--show {  /*se crea otra clase para que se ponga cuando se le da el boton y que salga con transicion, hay que quitarle el display none para que se muestren las tranciones*/
+    left: -0;
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu-mobile__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 1rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-borders);
+}
+
+.menu-mobile__container-logo {
+    width: 15rem;
+}
+
+.menu-mobile__btn_close {
+    color: var(--color-bg-dark);
+    font-size: 2.5rem;
+    background-color: transparent;
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-mobile__list {
+    height: 100%;
+    overflow: auto;
+    display: block;
+}
+
+.menu-mobile__item {
+    margin: 0 1rem;
+    position: relative;
+    border-bottom: 1px solid var(--color-borders);
+}
+
+.menu-mobile__link {
+    color: var(--color-text-body);
+    font-weight: 500;
+    height: 5rem;
+    line-height: 5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-mobile__icon {
+    font-size: 1.4rem;
+}
+
+.menu-mobile__submenu {
+    padding: 0;
+    padding-bottom: 1rem;
+    min-width: 100%;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+}
+
+.submenu-mobile__link {
+    color: var(--color-text-body);
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding: 0.7rem 1rem;
+    display: block;
+    position: relative;
+}
+
+/*BOTÓN MODO OSCURO*/
+.switcher {
+    top: 20rem;
+    left: 0;
+    background-color: var(--color-primary);
+    border-radius: 0 2rem 2rem 0;
+    padding: 1rem;
+    position: fixed;
+    z-index: 5;
+}
+
+.switcher__btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+}
+
+.switcher__icon-light,
+.switcher__icon-dark {
+    color: var(--color-secondary);
+    font-size: 1.8rem;
+    height: 4rem;
+    width: 4rem;
+    line-height: 4rem;
+}
+
+.switcher__icon-dark {
+    display: none;
 }
