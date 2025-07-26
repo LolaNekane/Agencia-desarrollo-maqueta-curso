@@ -313,7 +313,8 @@
     .reviews__title,
     .clients__title, 
     .news__title,
-    .contact__title {
+    .contact__title,
+    .fleft__title {
         font-size: 4rem;
 
     }
@@ -437,6 +438,9 @@
         padding-right: 0;
     }
 
+    .stats__stat {
+        flex-basis: calc(100% - 1.5rem);
+    }
     .contact__img {
         width: 35%;
     }
@@ -451,6 +455,14 @@
 
     .layout__contact:before {
         height: 41rem;
+    }
+
+    .fleft__mail-icon {
+        padding: 0;
+    }
+    
+    .fleft__form-control {
+        padding: 0 1rem;
     }
 
     .footer__fright {
