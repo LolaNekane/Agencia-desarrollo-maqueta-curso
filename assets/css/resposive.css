@@ -465,6 +465,11 @@
         padding: 0 1rem;
     }
 
+    .fleft__btn {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     .footer__fright {
         gap: 3rem;
     }
