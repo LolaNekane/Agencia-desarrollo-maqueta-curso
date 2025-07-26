@@ -457,6 +457,13 @@
         height: 41rem;
     }
 
+    .layout__footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .fleft__container {
+        margin-right: 0;
+    }
     .fleft__mail-icon {
         padding: 0;
     }
@@ -471,12 +478,26 @@
     }
 
     .footer__fright {
+        flex-wrap: wrap;
         gap: 3rem;
+    }
+
+    .footer__widget {
+        margin-bottom: 0;
     }
 
     .footer__widget--50, 
     .footer__widget--25 {
-        flex-basis: auto;
+        flex-basis: calc(50% - 3rem);
+    }
+
+    .widget__title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5em;
+    }
+
+    .widget__link {
+        font-size: 1.5rem;
     }
 
 }
