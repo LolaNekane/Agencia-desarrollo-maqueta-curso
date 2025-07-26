@@ -431,7 +431,25 @@
     }
 
     .projects__categories {
+        gap: 1rem;
         flex-direction: column;
+    }
+
+    .project__content {
+        padding: 4rem 2rem;
+    }
+
+    .categories__item--active, .categories__item:hover {
+        border-bottom: none
+    }
+
+    .categories__link {
+        display: inline-block;
+    }
+
+    .categories__item--active > .categories__link,
+    .categories__item:hover > .categories__link {
+        border-bottom: 3px solid var(--color-primary);
     }
 
     .news__new {

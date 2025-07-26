@@ -136,3 +136,16 @@ body {
     color: var(--color-hover-dark);
 }
 
+@media(max-width: 640px){
+
+    .categories__item--active, .categories__item:hover {
+        border-bottom: none
+    }
+
+    .categories__item--active > .categories__link,
+    .categories__item:hover > .categories__link {
+        border-bottom: 3px solid var(--color-bg-btn);
+    }
+
+}
+
